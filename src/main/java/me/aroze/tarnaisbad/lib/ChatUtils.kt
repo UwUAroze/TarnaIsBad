@@ -8,7 +8,7 @@ val hexPattern = Pattern.compile("&(#[a-fA-F\\d]{6})");
 
 enum class ChatColors(val hex: String) {
     PRIMARY("&#ffd4e3"),
-    SECONDARY("&#ffb5c"),
+    SECONDARY("&#ffb5cf"),
     ERROR("&#ff6e6e");
 }
 
