@@ -10,7 +10,7 @@ import org.bukkit.entity.Player
 object SpawnCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.sendWarning("&pYou aren't a player!")
+        if (sender !is Player) return sender.sendWarning("You aren't a player!")
 
         sender.teleport(TarnaIsBad.getInstance().spawn)
         return true

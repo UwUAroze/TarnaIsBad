@@ -8,14 +8,16 @@ val hexPattern = Pattern.compile("&(#[a-fA-F\\d]{6})");
 
 enum class ChatColors(val hex: String) {
     PRIMARY("&#ffd4e3"),
-    SECONDARY("&#ffb5c");
+    SECONDARY("&#ffb5c"),
+    ERROR("&#ff6e6e");
 }
 
 fun String.coloured(): String {
     var coloured = this
     var match: Matcher = hexPattern.matcher(coloured
         .replace("&p", ChatColors.PRIMARY.hex)
-        .replace("&s", ChatColors.SECONDARY.hex))
+        .replace("&s", ChatColors.SECONDARY.hex)
+        .replace("&g", ChatColors.ERROR.hex))
 
     while (match.find()) {
         val color: String = coloured.substring(match.start(), match.end())

@@ -22,7 +22,7 @@ fun handleTarget(sender: CommandSender, args: Array<out String>, offlinePlayerEr
 
 // Used for incorrect syntaxes/etc; generic error message format.
 fun CommandSender.sendWarning(message: String) : Boolean {
-    this.sendColoured("&p⚠ $message")
+    this.sendColoured("&c⚠ $message")
     return true
 }
 

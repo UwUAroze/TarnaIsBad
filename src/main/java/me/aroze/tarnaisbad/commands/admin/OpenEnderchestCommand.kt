@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 object OpenEnderchestCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
+        if (sender !is Player) return sender.sendWarning("Console cannot execute this command.")
         if (sender.hasPermission("enderchest.others", "&pYou can only open your own ender chest.")) return true
         val target = handleTarget(sender, args) ?: return true
 

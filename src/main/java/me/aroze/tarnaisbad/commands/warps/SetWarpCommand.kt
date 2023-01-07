@@ -12,8 +12,8 @@ import org.bukkit.entity.Player
 object SetWarpCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
-        if (args.isEmpty()) return sender.sendWarning("&pPlease specify a warp name.")
+        if (sender !is Player) return sender.sendWarning("Console cannot execute this command.")
+        if (args.isEmpty()) return sender.sendWarning("Please specify a warp name.")
 
         val name = args[0].lowercase()
 

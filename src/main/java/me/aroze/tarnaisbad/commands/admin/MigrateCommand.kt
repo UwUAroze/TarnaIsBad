@@ -24,7 +24,7 @@ val file = File("plugins/Skript/variables.csv")
 object MigrateCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (!sender.hasPermission("migrate", "&pYou don't have permission to do that.")) return true
+        if (!sender.hasPermission("migrate", "You don't have permission to do that.")) return true
 
         Bukkit.getScheduler().runTaskAsynchronously(TarnaIsBad.getInstance(), Runnable {
             file.readLines().forEach {

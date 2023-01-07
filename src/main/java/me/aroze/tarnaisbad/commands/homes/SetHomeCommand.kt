@@ -9,8 +9,8 @@ import org.bukkit.entity.Player
 object SetHomeCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
-        if (args.isEmpty()) return sender.sendWarning("&pPlease specify a home name.")
+        if (sender !is Player) return sender.sendWarning("Console cannot execute this command.")
+        if (args.isEmpty()) return sender.sendWarning("Please specify a home name.")
 
         val name = args[0].lowercase()
         val uuid = sender.uniqueId.toString()

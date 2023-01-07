@@ -10,13 +10,13 @@ import org.bukkit.entity.Player
 
 object RenameCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
-        if (args.isEmpty()) return sender.sendWarning("&pPlease specify a name.")
-        if (sender.level < 1) return sender.sendWarning("&pYou don't have enough experience.")
+        if (sender !is Player) return sender.sendWarning("Console cannot execute this command.")
+        if (args.isEmpty()) return sender.sendWarning("Please specify a name.")
+        if (sender.level < 1) return sender.sendWarning("You don't have enough experience.")
         if (!(sender.inventory.contains(Material.ANVIL) ||
               sender.inventory.contains(Material.CHIPPED_ANVIL) ||
               sender.inventory.contains(Material.DAMAGED_ANVIL)))
-                return sender.sendWarning("&pYou need an anvil in your inventory.")
+                return sender.sendWarning("You need an anvil in your inventory.")
 
         val rename = args.joinToString(" ")
         val item = sender.inventory.itemInMainHand
