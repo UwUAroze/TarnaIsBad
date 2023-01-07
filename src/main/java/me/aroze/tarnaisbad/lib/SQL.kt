@@ -26,6 +26,10 @@ object SQL {
             location TEXT NOT NULL
         )""".trimIndent())
     }
+
+    fun close() {
+        conn.close()
+    }
     
     fun execute(sql: String, vararg values: Any) {
         prepare(sql, *values).execute()

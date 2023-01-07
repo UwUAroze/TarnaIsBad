@@ -7,17 +7,17 @@ import java.util.regex.Pattern
 val hexPattern = Pattern.compile("&(#[a-fA-F\\d]{6})");
 
 enum class ChatColors(val hex: String) {
-    PRIMARY("&#ffd4e3"),
-    SECONDARY("&#ffb5cf"),
-    ERROR("&#ff6e6e");
+    PRIMARY(translate("colors.primary")),
+    SECONDARY(translate("colors.secondary")),
+    ERROR(translate("colors.error"));
 }
 
 fun String.coloured(): String {
     var coloured = this
-    var match: Matcher = hexPattern.matcher(coloured
         .replace("&p", ChatColors.PRIMARY.hex)
         .replace("&s", ChatColors.SECONDARY.hex)
-        .replace("&g", ChatColors.ERROR.hex))
+        .replace("&g", ChatColors.ERROR.hex)
+    var match: Matcher = hexPattern.matcher(coloured)
 
     while (match.find()) {
         val color: String = coloured.substring(match.start(), match.end())
@@ -26,20 +26,4 @@ fun String.coloured(): String {
     }
 
     return ChatColor.translateAlternateColorCodes('&', coloured)
-}
-
-fun String.undress(): String {
-    return ChatColor.stripColor(this)
-}
-
-fun String.replaceCaseInsensitive(text: String, replacement: String): String {
-    return this.replace(Regex("(?i)$text"), replacement)
-}
-
-fun String.handlePluralChar(amount: Int, plural: String = "s"): String {
-    return if (amount == 1) this else this + plural
-}
-
-fun String.handlePluralWord(amount: Int, plural: String): String {
-    return if (amount == 1) this else plural
 }

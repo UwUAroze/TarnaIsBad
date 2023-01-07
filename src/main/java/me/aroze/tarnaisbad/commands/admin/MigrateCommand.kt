@@ -24,36 +24,39 @@ val file = File("plugins/Skript/variables.csv")
 object MigrateCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (!sender.hasPermission("migrate", "You don't have permission to do that.")) return true
-
         Bukkit.getScheduler().runTaskAsynchronously(TarnaIsBad.getInstance(), Runnable {
             file.readLines().forEach {
                 val typeRegex = Regex("\"?(home|warp).+")
                 if (!it.matches(typeRegex)) return@forEach
 
-                val (type) = typeRegex.find("\"?(home|warp)")!!.destructured
+                val (type) = typeRegex.find(it)!!.destructured
 
                 when (type) {
                     "home" -> {
-                        val regex = Regex("\"?home::(([\\da-f]+-?)+)::([^,\"]+), location, ([\\dA-F]+)")
-                        val (uuid, _, name, data) = regex.find(it)!!.destructured
+                        val regex = Regex("\"?home::(([\\da-f]+-?)+)(::([^,\"]+))?\"?, location, ([\\dA-F]+)")
+                        val (uuid, _, _, name, data) = regex.find(it)!!.destructured
                         val reader = ByteArrayInputStream(data.deserializeFromHex())
                         val location = readLocation(reader)
+                        reader.close()
 
                         SQL.execute(
-                            "INSERT INTO homes(name, owner, location) VALUES(?, ?, ?)",
-                            name,
+                            "INSERT OR REPLACE INTO homes(name, owner, location) VALUES(?, ?, ?)",
+                            if (name == "") "home" else name,
                             uuid,
                             serializeLocation(location))
                     }
                     "warp" -> {
-                        val regex = Regex("\"?warp::([^:]+)::location, location, ([\\dA-F]+)")
+                        val regex = Regex("\"?warp::([^:]+)::location\"?, location, ([\\dA-F]+)")
+
+                        if (!regex.matches(it)) return@forEach
+
                         val (name, data) = regex.find(it)!!.destructured
                         val reader = ByteArrayInputStream(data.deserializeFromHex())
                         val location = readLocation(reader)
+                        reader.close()
 
                         SQL.execute(
-                            "INSERT INTO warps(name, location) VALUES(?, ?)",
+                            "INSERT OR REPLACE INTO warps(name, location) VALUES(?, ?)",
                             name,
                             serializeLocation(location))
                     }

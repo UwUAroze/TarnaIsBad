@@ -6,51 +6,32 @@ authors: [ Aroze, Goose ]
 description: tarns sucks. tarna bad. tarna poopy. tarna dookie.
 website: https://github.com/UwUAroze/TarnaIsBad
 commands:
-  craft:
-    description: Open a crafting table in your inventory.
-    aliases: [ cr ]
-
   deletehome:
     description: Delete a home.
+    aliases: [ delhome ]
 
-  deletewarp:
-    description: Delete a warp.
-    
-  hat:
-    description: Slaps your held item on your head.
-
-  enderchest:
-    description: Open your enderchest.
-    aliases: [ ec ]
+  homes:
+    description: View your homes.
 
   home:
     description: Go to a home.
 
-  openenderchest:
-    description: Open another player's enderchest.
-    aliases: [ oec ]
-
-  ping:
-    description: View your ping.
-
-  rename:
-    description: Renames the item in your hand.
-
   sethome:
-   description: Set a home.
+    description: Set a home.
 
-  setspawn:
-    description: Set spawn.
-    permission: tarnaisbad.setspawn
+  deletewarp:
+    description: Delete a warp.
+    aliases: [ delwarp ]
 
   setwarp:
     description: Set a warp.
 
-  spawn:
-    description: Teleport to spawn.
-
   warp:
     description: Go to a warp.
 
+  warps:
+    description: View all warps.
+
   migrate:
     description: Migrate homes and warps from Skript variables.
+    permission: tarnaisbad.migrate

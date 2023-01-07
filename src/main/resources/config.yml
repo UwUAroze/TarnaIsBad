@@ -1,2 +1,9 @@
-# x, y, z, world, yaw, pitch
-spawn: -236.5, 69.93750, -164.5, world, 0, 0
+messages:
+    colors:
+        primary: "&#ffd4e3"
+        secondary: "&#ffb5cf"
+        error: "&#ff6e6e"
+
+    must-be-player: Console cannot execute this command.
+    no-permission: You don't have permission to execute this command.
+    player-is-offline: That player is offline.
