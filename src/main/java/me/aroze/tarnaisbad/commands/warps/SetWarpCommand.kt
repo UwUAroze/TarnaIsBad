@@ -1,9 +1,9 @@
 package me.aroze.tarnaisbad.commands.warps
 
 import me.aroze.tarnaisbad.lib.SQL
-import me.aroze.tarnaisbad.util.isStupid
-import me.aroze.tarnaisbad.util.sendColoured
-import me.aroze.tarnaisbad.util.serializeLocation
+import me.aroze.tarnaisbad.lib.sendWarning
+import me.aroze.tarnaisbad.lib.sendColoured
+import me.aroze.tarnaisbad.lib.serializeLocation
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -12,8 +12,8 @@ import org.bukkit.entity.Player
 object SetWarpCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return sender.isStupid("You aren't a player!")
-        if (args.isEmpty()) return sender.isStupid("Specify a warp!")
+        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
+        if (args.isEmpty()) return sender.sendWarning("&pPlease specify a warp name.")
 
         val name = args[0].lowercase()
 
@@ -23,7 +23,7 @@ object SetWarpCommand : CommandExecutor {
             serializeLocation(sender.location)
         )
 
-        sender.sendColoured("&#ffd4e3Set warp &#ffb5c$name &#ffd4e3to your location :)")
+        sender.sendColoured("&pSet warp &s$name &pto your location.")
 
         return true
     }

@@ -1,6 +1,6 @@
 package me.aroze.tarnaisbad.commands
 
-import me.aroze.tarnaisbad.util.isStupid
+import me.aroze.tarnaisbad.lib.sendWarning
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -10,13 +10,13 @@ object HatCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
 
-        if (sender !is Player) return sender.isStupid("You aren't a player!")
+        if (sender !is Player) return sender.sendWarning("&pConsole cannot execute this command.")
 
         val oldhelm = sender.inventory.helmet
         val oldtool = sender.inventory.itemInMainHand
 
         sender.inventory.helmet = oldtool
-        sender.inventory.itemInMainHand = oldhelm
+        sender.inventory.setItemInMainHand(oldhelm)
 
         return true
 

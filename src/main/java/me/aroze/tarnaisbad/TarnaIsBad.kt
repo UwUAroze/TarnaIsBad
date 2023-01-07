@@ -8,8 +8,8 @@ import me.aroze.tarnaisbad.commands.homes.SetHomeCommand
 import me.aroze.tarnaisbad.commands.warps.DeleteWarpCommand
 import me.aroze.tarnaisbad.commands.warps.SetWarpCommand
 import me.aroze.tarnaisbad.commands.warps.WarpCommand
-import me.aroze.tarnaisbad.util.setCommand
-import me.aroze.tarnaisbad.util.deserializeLocation
+import me.aroze.tarnaisbad.lib.setCommand
+import me.aroze.tarnaisbad.lib.deserializeLocation
 import me.aroze.tarnaisbad.listeners.PlayerJoinListener
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
@@ -24,7 +24,7 @@ class TarnaIsBad : JavaPlugin() {
     lateinit var spawn: Location
 
     override fun onEnable() {
-        logger.info("Tarna is bad :sunglasses:")
+        logger.info("Tarna is cool :flushed: (don't tell ollie!)")
 
         saveDefaultConfig()
         spawn = deserializeLocation(config.getString("spawn")!!)
@@ -32,7 +32,7 @@ class TarnaIsBad : JavaPlugin() {
         CraftCommand.setCommand("craft")
         DeleteHomeCommand.setCommand("deletehome")
         DeleteWarpCommand.setCommand("deletewarp")
-        EnderchestCommand.setCommand("enderchest")
+        EnderChestCommand.setCommand("enderchest")
         HatCommand.setCommand("hat")
         HomeCommand.setCommand("home")
         OpenEnderchestCommand.setCommand("openenderchest")

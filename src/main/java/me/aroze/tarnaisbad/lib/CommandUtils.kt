@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.util
+package me.aroze.tarnaisbad.lib
 
 import me.aroze.tarnaisbad.TarnaIsBad.Companion.getInstance
 import org.bukkit.Bukkit
@@ -13,24 +13,24 @@ import org.bukkit.entity.Player
 
 fun handleTarget(sender: CommandSender, args: Array<out String>, offlinePlayerError: String = "That player doesn't exist, dummy") : Player? {
     if (args.isEmpty()) {
-        if (sender is Player) return sender as Player
-        sender.isStupid("You aren't a player! So specify one, silly"); return null
+        if (sender is Player) return sender
+        sender.sendWarning("&pPlease specify a player."); return null
     }
-    if (Bukkit.getPlayer(args[0]) == null) sender.isStupid(offlinePlayerError)
+    if (Bukkit.getPlayer(args[0]) == null) sender.sendWarning(offlinePlayerError)
     return Bukkit.getPlayer(args[0])
 }
 
 // Used for incorrect syntaxes/etc; generic error message format.
-fun CommandSender.isStupid(message: String) : Boolean {
-    this.sendColoured("&#ff6e6e⚠ &#ff7f6e$message")
+fun CommandSender.sendWarning(message: String) : Boolean {
+    this.sendColoured("&p⚠ $message")
     return true
 }
 
 // Permission check
-// Should be used like: if (sender.isRightless("smite")) return true
-fun CommandSender.isRightless(permission: String, message: String = "lol u wish") : Boolean {
+// Should be used like: if (sender.hasPermission("smite")) return true
+fun CommandSender.hasPermission(permission: String, message: String = "lol u wish") : Boolean {
     if (this.hasPermission("tarnaisbad.$permission")) return false
-    return this.isStupid(message)
+    return this.sendWarning(message)
 }
 
 // Allows for syntax like 'return sender.sendFinalMessage("done)'
