@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.listener
+package me.aroze.tarnaisbad.listeners
 
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent

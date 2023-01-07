@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.command
+package me.aroze.tarnaisbad.commands
 
 import me.aroze.tarnaisbad.util.isStupid
 import org.bukkit.command.Command

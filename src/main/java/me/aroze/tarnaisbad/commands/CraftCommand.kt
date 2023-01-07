@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.command
+package me.aroze.tarnaisbad.commands
 
 import me.aroze.tarnaisbad.util.isStupid
 import org.bukkit.Material
@@ -7,7 +7,6 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryType
-import org.bukkit.inventory.Inventory
 
 object CraftCommand : CommandExecutor {
 

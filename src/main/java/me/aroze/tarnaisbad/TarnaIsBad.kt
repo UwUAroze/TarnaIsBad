@@ -1,9 +1,16 @@
 package me.aroze.tarnaisbad
 
-import me.aroze.tarnaisbad.command.*
+import me.aroze.tarnaisbad.commands.*
+import me.aroze.tarnaisbad.commands.admin.OpenEnderchestCommand
+import me.aroze.tarnaisbad.commands.homes.DeleteHomeCommand
+import me.aroze.tarnaisbad.commands.homes.HomeCommand
+import me.aroze.tarnaisbad.commands.homes.SetHomeCommand
+import me.aroze.tarnaisbad.commands.warps.DeleteWarpCommand
+import me.aroze.tarnaisbad.commands.warps.SetWarpCommand
+import me.aroze.tarnaisbad.commands.warps.WarpCommand
 import me.aroze.tarnaisbad.util.setCommand
 import me.aroze.tarnaisbad.util.deserializeLocation
-import me.aroze.tarnaisbad.listener.PlayerJoinListener
+import me.aroze.tarnaisbad.listeners.PlayerJoinListener
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
 import org.bukkit.Location

@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.command
+package me.aroze.tarnaisbad.commands.homes
 
 import me.aroze.tarnaisbad.lib.SQL
 import me.aroze.tarnaisbad.util.isStupid

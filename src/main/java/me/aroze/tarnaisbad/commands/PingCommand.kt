@@ -1,4 +1,4 @@
-package me.aroze.tarnaisbad.command
+package me.aroze.tarnaisbad.commands
 
 import me.aroze.tarnaisbad.util.handleTarget
 import me.aroze.tarnaisbad.util.sendColoured
