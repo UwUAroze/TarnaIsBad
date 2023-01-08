@@ -15,7 +15,7 @@ object WarpCommand : CommandExecutor {
         if (sender !is Player) return sender.sendWarning(translate("must-be-player"))
         if (args.isEmpty()) return sender.sendWarning("Please specify a warp name.")
 
-        val warp = SQL.query("SELECT location FROM warps WHERE name = ?", args[0].lowercase())
+        val warp = SQL.query("SELECT location FROM warps WHERE name = ?", args.joinToString(" ").lowercase())
         if (!warp.next()) return sender.sendWarning("That warp doesn't exist.")
 
         sender.teleport(deserializeLocation(warp.getString("location")))

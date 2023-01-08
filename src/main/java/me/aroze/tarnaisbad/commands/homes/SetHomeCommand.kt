@@ -13,14 +13,13 @@ object SetHomeCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender !is Player) return sender.sendWarning(translate("must-be-player"))
-        if (args.isEmpty()) return sender.sendWarning("Please specify a home name.")
 
         Bukkit.getScheduler().runTaskAsynchronously(TarnaIsBad.getInstance(), Runnable {
-            val name = args[0].lowercase()
+            val name = (if (args.isEmpty()) "home" else args.joinToString(" ")).lowercase()
             val uuid = sender.uniqueId.toString()
 
             if (getCount(uuid) >= 10) {
-                sender.sendColoured("&pYou have hit the limit of 10 homes.")
+                sender.sendWarning("You have hit the limit of 10 homes.")
                 return@Runnable
             }
 

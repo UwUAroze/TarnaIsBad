@@ -15,7 +15,7 @@ object SetWarpCommand : CommandExecutor {
         if (args.isEmpty()) return sender.sendWarning("Please specify a warp name.")
 
         Bukkit.getScheduler().runTaskAsynchronously(TarnaIsBad.getInstance(), Runnable {
-            val name = args[0].lowercase()
+            val name = args.joinToString(" ")
 
             SQL.execute(
                 "INSERT OR REPLACE INTO warps(name, location) VALUES(?, ?)",
@@ -23,7 +23,7 @@ object SetWarpCommand : CommandExecutor {
                 serializeLocation(sender.location)
             )
 
-            sender.sendFinalColoured("&pSet warp &s$name &pto your location.")
+            sender.sendColoured("&pSet warp &s$name &pto your location.")
         })
 
         return true

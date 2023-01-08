@@ -11,6 +11,8 @@ import me.aroze.tarnaisbad.commands.warps.WarpCommand
 import me.aroze.tarnaisbad.commands.warps.WarpsCommand
 import me.aroze.tarnaisbad.lib.SQL
 import me.aroze.tarnaisbad.lib.setCommand
+import me.aroze.tarnaisbad.listeners.TabCompleteListener
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class TarnaIsBad : JavaPlugin() {
@@ -33,6 +35,8 @@ class TarnaIsBad : JavaPlugin() {
         HomesCommand.setCommand("homes")
         WarpsCommand.setCommand("warps")
         MigrateCommand.setCommand("migrate")
+
+        Bukkit.getPluginManager().registerEvents(TabCompleteListener, this)
     }
 
     override fun onDisable() {

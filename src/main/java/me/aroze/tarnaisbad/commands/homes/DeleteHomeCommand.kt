@@ -14,7 +14,7 @@ object DeleteHomeCommand : CommandExecutor {
         if (sender !is Player) return sender.sendWarning(translate("must-be-player"))
 
         Bukkit.getScheduler().runTaskAsynchronously(TarnaIsBad.getInstance(), Runnable {
-            val name = if (args.isEmpty()) "home" else args[0]
+            val name = if (args.isEmpty()) "home" else args.joinToString(" ")
 
             SQL.execute("DELETE FROM homes WHERE owner = ? AND name = ?", sender.uniqueId.toString(), name)
             sender.sendColoured("&pDeleted home &s$name&p.")
